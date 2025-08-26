@@ -32,32 +32,3 @@ The app extracts the video transcript, stores it in a vector database (FAISS), a
 git clone https://github.com/your-username/youtube-rag-bot.git
 cd youtube-rag-bot
 
-
-### 2. Install Dependencies
-pip install -r requirements.txt
-
-### 3. Set OpenAI API Key
-
-Create a .env file in the project root:
-
-OPENAI_API_KEY=your_api_key_here
-
-
-Or set it in your terminal:
-
-# Mac/Linux
-export OPENAI_API_KEY="your_api_key_here"
-
-# Windows
-setx OPENAI_API_KEY "your_api_key_here"
-
-### 4. Run the App
-streamlit run app.py
-
-### 📂 Project Structure
-youtube-rag-bot/
-│── app.py              # Streamlit app
-│── requirements.txt    # Dependencies
-│── README.md           # Project documentation
-│── .env.example        # Example environment variables
-
