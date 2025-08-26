@@ -54,7 +54,7 @@ setx OPENAI_API_KEY "your_api_key_here"
 ### 4. Run the App
 streamlit run app.py
 
-## 📂 Project Structure
+### 📂 Project Structure
 youtube-rag-bot/
 │── app.py              # Streamlit app
 │── requirements.txt    # Dependencies
