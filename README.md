@@ -1,7 +1,7 @@
-# 🎥 YouTube Q&A Bot with RAG + LangChain
+# 🎥 YouTube Q&A Bot with RAG + LLM
 
 A Retrieval-Augmented Generation (RAG) app that lets users **ask questions about any YouTube video**.  
-The app extracts the video transcript, stores it in a vector database (FAISS), and answers user queries with context-aware responses using **LangChain + OpenAI**.  
+The app extracts the video transcript, stores it in a vector database (FAISS), and answers user queries with context-aware responses using **OpenAI**.  
 
 👉 Live Demo (optional): [Add your Streamlit/Hugging Face link here]
 
@@ -11,13 +11,12 @@ The app extracts the video transcript, stores it in a vector database (FAISS), a
 - 📌 Extracts transcripts from YouTube videos  
 - 🔎 Splits transcript into chunks & creates vector embeddings  
 - 🤖 Uses **LLM (GPT-3.5/4)** to answer questions based only on video content  
-- 🎯 Built with **LangChain, FAISS, OpenAI API, and Streamlit**  
+- 🎯 Built with **FAISS, OpenAI API, and Streamlit**  
 - 📝 Extendable: multi-video RAG, summaries, speaker attribution  
 
 ---
 
 ## 🛠️ Tech Stack
-- [LangChain](https://www.langchain.com/)  
 - [OpenAI API](https://platform.openai.com/)  
 - [FAISS](https://faiss.ai/)  
 - [Streamlit](https://streamlit.io/)  
