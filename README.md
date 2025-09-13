@@ -1,4 +1,4 @@
-# 🎥 YouTube Q&A Bot with RAG + LLM
+# 🎥 YouTube Q&A with RAG + LLM
 
 A Retrieval-Augmented Generation (RAG) app that lets users **ask questions about any YouTube video**.  
 The app extracts the video transcript, stores it in a vector database (FAISS), and answers user queries with context-aware responses using **OpenAI**.  
