@@ -34,9 +34,14 @@ if run_button:
     else:
         video_id = video_url.split("v=")[-1]
         with st.spinner("Fetching transcript..."):
-            transcript = fetch_transcript(video_id)
-        if transcript is None:
-            st.error("Transcript not available for this video.")
+            try:
+                transcript = fetch_transcript(video_id)
+            except Exception:
+                st.error("❌ Unable to fetch transcript. This video may be private, restricted, or lacks captions.\n Please try another video or with english transcript")
+                st.stop()
+
+        if not transcript:
+            st.warning("⚠️ No transcript found for this video.")
         else:
             with st.spinner("Creating embeddings and searching..."):
                 retriever = create_vector_store(transcript)
