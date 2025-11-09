@@ -1,0 +1,10 @@
+# Virtual environment
+myenv/
+venv/
+.env
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+
+# VS Code
+.vscode/
