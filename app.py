@@ -1,10 +1,24 @@
+# ==============================
+# ✅ Environment Setup for OpenAI Key
+# ==============================
+import os
 import streamlit as st
 from dotenv import load_dotenv
-import os
-from utils import fetch_transcript, create_vector_store, build_rag_chain
 
-# Load API key
+# Load local .env when running locally
 load_dotenv()
+
+# Use key from .env (local) or Streamlit Secrets (cloud)
+if "OPENAI_API_KEY" not in os.environ:
+    if "OPENAI_API_KEY" in st.secrets:
+        os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+    else:
+        st.error("⚠️ OpenAI API key not found. Please add it in .env or Streamlit Secrets.")
+
+# ==============================
+# 🧠 Main App
+# ==============================
+from utils import fetch_transcript, create_vector_store, build_rag_chain
 
 st.set_page_config(page_title="YouTube Video Q&A", layout="centered")
 st.title("🎬 YouTube Transcript Q&A App")
