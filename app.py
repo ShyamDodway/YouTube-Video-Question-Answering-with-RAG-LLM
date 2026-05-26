@@ -7,14 +7,12 @@ from dotenv import load_dotenv
 import re  # For YouTube link normalization
 
 # Load local .env when running locally
+# Load local .env
 load_dotenv()
 
-# Use key from .env (local) or Streamlit Secrets (cloud)
-if "OPENAI_API_KEY" not in os.environ:
-    if "OPENAI_API_KEY" in st.secrets:
-        os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
-    else:
-        st.error("⚠️ OpenAI API key not found. Please add it in .env or Streamlit Secrets.")
+# Check Groq API key
+if "GROQ_API_KEY" not in os.environ:
+    st.error("⚠️ GROQ_API_KEY not found in .env file")
 
 # ==============================
 # 🧠 Utility Function to Normalize YouTube URLs
