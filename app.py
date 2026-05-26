@@ -9,11 +9,14 @@ import re  # For YouTube link normalization
 # Load local .env
 load_dotenv()
 
-# Load GROQ API key from Streamlit Secrets (cloud)
-if "GROQ_API_KEY" in st.secrets:
-    os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+# Try loading Streamlit Cloud secrets
+try:
+    if "GROQ_API_KEY" in st.secrets:
+        os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+except Exception:
+    pass
 
-# Check if key exists
+# Final check
 if "GROQ_API_KEY" not in os.environ:
     st.error("⚠️ GROQ_API_KEY not found")
 
@@ -122,14 +125,14 @@ if run_button:
 
                 st.stop()
 
-        # No transcript
+        # No transcript found
         if not transcript:
 
             st.warning(
                 "⚠️ No transcript found for this video."
             )
 
-        # Debugging errors from utils.py
+        # Show debugging errors
         elif (
             isinstance(transcript, str)
             and transcript.startswith("ERROR:")
