@@ -73,8 +73,8 @@ if run_button:
         with st.spinner("Fetching transcript..."):
             try:
                 transcript = fetch_transcript(video_id)
-            except Exception:
-                st.error("❌ Unable to fetch transcript. This video may be private, restricted, or lacks captions.\n Please try another video or one with English transcript.")
+            except Exception as e:
+                st.error(f"Error fetching transcript: {str(e)}")
                 st.stop()
 
         if not transcript:
