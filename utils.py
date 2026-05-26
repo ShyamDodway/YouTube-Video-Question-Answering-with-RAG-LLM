@@ -7,15 +7,26 @@ from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough, RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
-
+from langchain_community.document_loaders import YoutubeLoader
 
 def fetch_transcript(video_id: str):
-    """Fetch transcript text from a YouTube video."""
     try:
-        fetched = YouTubeTranscriptApi().fetch(video_id)
-        transcript = " ".join(chunk.text for chunk in fetched)  # 👈 FIX HERE
+        url = f"https://www.youtube.com/watch?v={video_id}"
+
+        loader = YoutubeLoader.from_youtube_url(
+            url,
+            add_video_info=False,
+            language=["en"]
+        )
+
+        docs = loader.load()
+
+        transcript = " ".join(doc.page_content for doc in docs)
+
         return transcript
-    except TranscriptsDisabled:
+
+    except Exception as e:
+        print(e)
         return None
 
 
